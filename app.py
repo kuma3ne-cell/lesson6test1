@@ -1,6 +1,7 @@
 import os
-from wsgiref.simple_server import make_server
 from urllib.parse import parse_qs
+from wsgiref.simple_server import make_server
+
 
 # --- WSGIアプリ本体 ---
 def app(environ, start_response):
@@ -18,7 +19,7 @@ def app(environ, start_response):
 
             # BMI計算（単位：身長 m）
             h_m = height / 100 if height else 0
-            bmi = weight / (h_m ** 2) if h_m else 0
+            bmi = weight / (h_m**2) if h_m else 0
 
             # 評価
             if bmi < 18.5:
@@ -64,7 +65,7 @@ def app(environ, start_response):
           <label>身長(cm): <input type="number" id="height" name="height" step="any" required></label><br><br>
           <label>体重(kg): <input type="number" id="weight" name="weight" step="any" required></label><br><br>
           <button type="submit">計算</button>
-          <button type="button" onclick="clearForm()">入力をリセット</button>
+          <button type="button" onclick="clearForm()">入力をクリア</button>
         </form>
         <div style="margin-top:20px;">{result}</div>
       </body>
